@@ -9,14 +9,27 @@ class App extends React.Component {
   };
   add=()=>{
     this.setState({
-        x:this.state.x+1
+        x:this.state.x+1 //x为1
+    })
+    this.setState({
+        x:this.state.x+1 //x还是为1
     })
   };
+  add2=()=>{
+      //x会直接+3
+      this.setState((state)=>({x:state.x+1}))
+      this.setState((state)=>({x:state.x+1}))
+      this.setState(
+          (state)=>({
+              x:state.x+1
+          })
+      )
+  }
   render(){
     return(
       <div>
         APP
-         <button onClick={()=>this.add()}>+1</button>
+         <button onClick={this.add2}>+1</button>
           <B name={this.state.x} />
       </div>
     )};
